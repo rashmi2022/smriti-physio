@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Dr. Smriti — Physiotherapy</title>
+  <meta name="description" content="Physiotherapy for back pain, neck pain, knee pain, ACL rehabilitation and mobility. Consultation ₹500. Book a slot online or on WhatsApp." />
+  <meta name="theme-color" content="#0e5e55" />
+  <meta property="og:title" content="Dr. Smriti — Physiotherapy" />
+  <meta property="og:description" content="Assessment-first physiotherapy. Consultation ₹500, sessions only as needed." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e5e55'/%3E%3Cpath d='M20 34h7l4-10 6 18 4-8h3' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="Home">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 13h4l2.5-6 4 12 2.5-6H21" /></svg>
+        </span>
+        <span data-cfg="brand">Smriti Physio</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#treatments">Treatments</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#book" class="btn btn--primary btn--sm nav__cta">Book a slot</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="dot"></span> Physiotherapy · <span data-cfg="city">Your City</span></p>
+          <h1>Move freely.<br /><em>Live without pain.</em></h1>
+          <p class="lead">
+            Care that starts with a proper assessment. <span data-cfg="shortName">Dr. Smriti</span> works out what is
+            causing your pain, then builds a plan around your body and your routine. You only come in for
+            the sessions you actually need.
+          </p>
+          <div class="hero__ctas">
+            <a href="#book" class="btn btn--primary btn--lg">
+              Book appointment
+              <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a data-link="wa" href="#" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">
+              <svg class="i i--wa" viewBox="0 0 24 24"><use href="#ic-wa" /></svg>
+              WhatsApp
+            </a>
+          </div>
+          <ul class="hero__facts">
+            <li><strong>₹<span data-cfg="consultationFee">500</span></strong><span>Consultation</span></li>
+            <li><strong><span data-cfg="consultationMinutes">30</span> min</strong><span>Assessment</span></li>
+            <li><strong>As needed</strong><span>Therapy sessions</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__card">
+            <svg class="spine" id="spineArt" viewBox="0 0 400 500"></svg>
+            <!-- Drop a photo at assets/physio.jpg and it will replace the illustration -->
+            <img class="hero__photo" src="assets/physio.jpg" alt="" onerror="this.remove()" />
+            <div class="float float--slot">
+              <span class="float__icon"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+              <div>
+                <small>Next available</small>
+                <strong id="nextSlot">Checking…</strong>
+              </div>
+            </div>
+            <div class="float float--fee">
+              <small>Consultation</small>
+              <strong>₹<span data-cfg="consultationFee">500</span></strong>
+            </div>
+            <div class="float float--tags">
+              <span>Back</span><span>Neck</span><span>Knee</span><span>ACL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TREATMENTS ============ -->
+    <section class="section" id="treatments">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Treatments</p>
+          <h2>Treatment for what's <em>actually</em> hurting.</h2>
+          <p class="section__sub">Every plan starts with an assessment. If something needs a scan or a specialist, you'll be told upfront.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M9 3h6M12 3v4"/><circle cx="12" cy="12" r="5"/><path d="M12 10v2l1.5 1.5"/><path d="M5 21c1.5-2 4-3 7-3s5.5 1 7 3"/></svg></div>
+            <h3>Consultation &amp; assessment</h3>
+            <p>A full one-to-one assessment: your history, how you move, and what is driving the pain. You leave with a diagnosis and a clear plan.</p>
+            <button class="card__link" data-book="Consultation & assessment">Book this <span>→</span></button>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="3.2" rx="1.4"/><rect x="8.6" y="7.2" width="6.8" height="3.2" rx="1.4"/><rect x="8.2" y="11.9" width="7.6" height="3.2" rx="1.4"/><rect x="7.8" y="16.6" width="8.4" height="3.4" rx="1.5"/></svg></div>
+            <h3>Back pain treatment</h3>
+            <p>For recurring, posture-related or lifting-related lower-back pain. Mobility, core strengthening and posture correction you can keep doing at home.</p>
+            <button class="card__link" data-book="Back pain">Book this <span>→</span></button>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="3"/><path d="M12 8.5v5"/><path d="M6 21c0-4 2.5-7.5 6-7.5s6 3.5 6 7.5"/><path d="M9 11l-2-1M15 11l2-1"/></svg></div>
+            <h3>Neck pain &amp; posture</h3>
+            <p>Relief for stiff necks, tension headaches and "tech neck" from long desk or phone hours, through posture retraining and gentle release work.</p>
+            <button class="card__link" data-book="Neck pain & posture">Book this <span>→</span></button>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M10 2v8.5c0 1.2.6 2.2 1.6 2.8"/><path d="M14 22v-7.2c0-.9-.4-1.7-1.1-2.2"/><circle cx="12.3" cy="13" r="2.6"/><path d="M8 22h8"/></svg></div>
+            <h3>Knee pain &amp; mobility rehab</h3>
+            <p>For arthritis, overuse or old injuries. Progressive strengthening and load management so stairs, squats and walks stop hurting.</p>
+            <button class="card__link" data-book="Knee pain & mobility">Book this <span>→</span></button>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M4 20l5-5M9 15l2-6 5-5"/><circle cx="17.5" cy="4.5" r="1.8"/><path d="M11 9l5 3 3 5"/><path d="M3 12h3M18 21v-3"/></svg></div>
+            <h3>ACL injury &amp; reconstruction rehab</h3>
+            <p>Structured rehab before or after ACL surgery, milestone by milestone, to rebuild strength, stability and the confidence to get back to sport.</p>
+            <button class="card__link" data-book="ACL rehabilitation">Book this <span>→</span></button>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M3 12h2M19 12h2"/><rect x="5" y="8" width="3" height="8" rx="1"/><rect x="16" y="8" width="3" height="8" rx="1"/><path d="M8 12h8"/></svg></div>
+            <h3>Mobility, strength &amp; conditioning</h3>
+            <p>A full-body programme to move better and stay strong, whether you're getting back into fitness or want to keep up with daily life as you age.</p>
+            <button class="card__link" data-book="Mobility, strength & conditioning">Book this <span>→</span></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">How it works</p>
+          <h2>Three steps. <em>No guesswork.</em></h2>
+        </div>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__n">01</span>
+            <h3>Pick a slot</h3>
+            <p>Choose a time below, or message on WhatsApp. You'll get a confirmation straight away.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">02</span>
+            <h3>Get assessed</h3>
+            <p>A <span data-cfg="consultationMinutes">30</span>-minute consultation to find the real cause of the pain, not just the symptom.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">03</span>
+            <h3>Recover with a plan</h3>
+            <p>Home exercises plus therapy sessions only if you need them. No long fixed packages.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Pricing</p>
+          <h2>Simple, <em>honest</em> pricing.</h2>
+          <p class="section__sub">You pay for the consultation. Everything after that depends on what your body needs.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="price price--main reveal">
+            <div class="price__top">
+              <h3>Consultation</h3>
+              <span class="pill">Start here</span>
+            </div>
+            <div class="price__amount"><span class="cur">₹</span><span data-cfg="consultationFee">500</span></div>
+            <p class="price__note">One-to-one · <span data-cfg="consultationMinutes">30</span> minutes</p>
+            <ul class="ticks">
+              <li>Detailed history &amp; movement assessment</li>
+              <li>Clear explanation of what's causing the pain</li>
+              <li>Personal home-exercise plan</li>
+              <li>Advice on whether you need sessions at all</li>
+            </ul>
+            <a href="#book" class="btn btn--light btn--block">Book consultation</a>
+          </div>
+
+          <div class="price reveal">
+            <div class="price__top">
+              <h3>Physiotherapy sessions</h3>
+              <span class="pill pill--soft">If needed</span>
+            </div>
+            <div class="price__amount price__amount--text">As needed</div>
+            <p class="price__note">Priced after your assessment</p>
+            <ul class="ticks">
+              <li>Hands-on therapy &amp; guided exercise</li>
+              <li>Number of sessions based on your progress</li>
+              <li>No forced packages or long commitments</li>
+              <li>Fee confirmed with you before you start</li>
+            </ul>
+            <a data-link="wa" data-wa-text="Hi, I'd like to know about physiotherapy session charges." href="#" target="_blank" rel="noopener" class="btn btn--outline btn--block">Ask on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section section--tint" id="about">
+      <div class="container about">
+        <div class="about__badge reveal" aria-hidden="true">
+          <span class="about__initial">S</span>
+          <img src="assets/physio.jpg" alt="" onerror="this.remove()" />
+        </div>
+        <div class="about__copy reveal">
+          <p class="eyebrow">Your physiotherapist</p>
+          <h2 data-cfg="name">Dr. Smriti (PT)</h2>
+          <div class="chips" id="credentials"></div>
+          <p>
+            <!-- ← CHANGE: replace with your own bio -->
+            Most people who come in have been told to "just rest it" or have been sold a package of sessions before anyone
+            properly examined them. <span data-cfg="shortName">Dr. Smriti</span> works the other way around: understand the
+            problem first, explain it in plain language, then treat only as much as you need.
+          </p>
+          <p>
+            Every patient leaves the first visit knowing what is wrong, what to do at home, and what recovery should look like
+            week by week.
+          </p>
+          <blockquote>"The goal is to make you independent of the clinic, not dependent on it."</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <!--
+      TEMPLATE REVIEWS — these are sample placeholders, not real patient reviews.
+      Replace them with genuine reviews (with the patient's permission) before the site goes live.
+    -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <p class="eyebrow">Reviews</p>
+            <h2>What patients <em>say</em>.</h2>
+          </div>
+          <div class="reviews__nav">
+            <button class="round-btn" id="revPrev" aria-label="Previous reviews"><svg class="i" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="round-btn" id="revNext" aria-label="Next reviews"><svg class="i" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <div class="reviews" id="reviewTrack">
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5">★★★★★</div>
+            <blockquote>I have a desk job and my lower back used to give up by evening. <span data-cfg="shortName">Dr. Smriti</span> first explained what was actually wrong, then gave me a small set of exercises to do at home. In three weeks I stopped taking painkillers. Very grateful!</blockquote>
+            <figcaption><span class="avatar" style="--h:12">PS</span><span><strong>Priya Sharma</strong><small>Lower back pain</small></span></figcaption>
+          </figure>
+
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5">★★★★★</div>
+            <blockquote>Brought my mother (67) for her knee pain. She was scared to even climb the stairs to our flat. The doctor was so patient with her and explained everything slowly. Now she goes for her morning walk again without any support.</blockquote>
+            <figcaption><span class="avatar" style="--h:200">RI</span><span><strong>Rajesh Iyer</strong><small>Knee pain · for his mother</small></span></figcaption>
+          </figure>
+
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5">★★★★★</div>
+            <blockquote>Had my ACL reconstruction after a football injury and was worried I'd never play properly again. The rehab was step by step with clear targets every week. Back on the ground after 8 months, knee feels solid.</blockquote>
+            <figcaption><span class="avatar" style="--h:160">AK</span><span><strong>Mohd. Arif Khan</strong><small>ACL rehabilitation</small></span></figcaption>
+          </figure>
+
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5">★★★★★</div>
+            <blockquote>Software job, 10 hours on laptop, constant neck stiffness and headaches. Got my posture and workstation corrected and a 10-minute routine. Headaches have almost gone. Should have come much earlier honestly.</blockquote>
+            <figcaption><span class="avatar" style="--h:280">SK</span><span><strong>Sneha Kulkarni</strong><small>Neck pain &amp; posture</small></span></figcaption>
+          </figure>
+
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5">★★★★★</div>
+            <blockquote>Another clinic told me I needed a 15-session package. Here, after the ₹500 consultation, I was told 4 sessions and home exercises were enough — and they were. Honest advice, which is rare.</blockquote>
+            <figcaption><span class="avatar" style="--h:30">VR</span><span><strong>Vikram Reddy</strong><small>Consultation</small></span></figcaption>
+          </figure>
+
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5">★★★★★</div>
+            <blockquote>Started coming for back pain after my second delivery. Exercises were gentle in the beginning and increased slowly. Now I can lift my baby and do housework without that sharp pain. Thank you so much!</blockquote>
+            <figcaption><span class="avatar" style="--h:330">GK</span><span><strong>Gurpreet Kaur</strong><small>Post-pregnancy back pain</small></span></figcaption>
+          </figure>
+
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5">★★★★★</div>
+            <blockquote>Papa is 62 and had become very stiff after retirement. The strength and mobility plan has made a big difference — he is doing his yoga again and his balance is much better. Very professional and punctual.</blockquote>
+            <figcaption><span class="avatar" style="--h:90">AB</span><span><strong>Ananya Banerjee</strong><small>Mobility &amp; strength · for her father</small></span></figcaption>
+          </figure>
+
+          <figure class="review">
+            <div class="stars" aria-label="4 out of 5">★★★★<span class="star--off">★</span></div>
+            <blockquote>Runner's knee before my half marathon. Found out my hip muscles were the real problem, not the knee. Finished the race pain-free. Only wish evening slots were easier to get on weekends!</blockquote>
+            <figcaption><span class="avatar" style="--h:240">RA</span><span><strong>Rohit Agarwal</strong><small>Knee pain · runner</small></span></figcaption>
+          </figure>
+        </div>
+
+        <p class="reviews__more" id="reviewsMore" hidden>
+          <a href="#" target="_blank" rel="noopener" id="reviewsLink">Read more reviews on Google →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING ============ -->
+    <section class="section section--dark" id="book">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow eyebrow--light">Book an appointment</p>
+          <h2>Pick a time that <em>works for you</em>.</h2>
+          <p class="section__sub">All times are India time (IST). <span id="bookingModeNote">Your request is sent on WhatsApp and confirmed there.</span></p>
+        </div>
+
+        <div class="booking" id="booking">
+          <!-- Step 1: date & time -->
+          <div class="booking__pick panel">
+            <div class="panel__head">
+              <span class="step-badge">1</span>
+              <h3>Choose date &amp; time</h3>
+            </div>
+            <div class="dates-wrap">
+              <div class="dates" id="dates" role="listbox" aria-label="Available dates"></div>
+            </div>
+            <div class="times" id="times" aria-live="polite">
+              <p class="muted">Loading available slots…</p>
+            </div>
+          </div>
+
+          <!-- Step 2: details -->
+          <form class="booking__form panel" id="bookingForm" novalidate>
+            <div class="panel__head">
+              <span class="step-badge">2</span>
+              <h3>Your details</h3>
+            </div>
+
+            <div class="summary" id="summary">
+              <svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              <span id="summaryText">Select a date and time</span>
+            </div>
+
+            <div class="field">
+              <label for="fName">Full name</label>
+              <input id="fName" name="name" autocomplete="name" required maxlength="80" placeholder="e.g. Priya Sharma" />
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="fPhone">WhatsApp number</label>
+                <div class="input-prefix"><span>+91</span><input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" required maxlength="14" placeholder="98XXXXXXXX" /></div>
+              </div>
+              <div class="field field--small">
+                <label for="fAge">Age</label>
+                <input id="fAge" name="age" type="number" inputmode="numeric" min="1" max="110" required placeholder="32" />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="fConcern">Concern</label>
+                <select id="fConcern" name="concern" required>
+                  <option value="">Select…</option>
+                  <option>Consultation &amp; assessment</option>
+                  <option>Back pain</option>
+                  <option>Neck pain &amp; posture</option>
+                  <option>Knee pain &amp; mobility</option>
+                  <option>ACL rehabilitation</option>
+                  <option>Mobility, strength &amp; conditioning</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="fMode">Visit type</label>
+                <select id="fMode" name="mode" required></select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="fNotes">Anything we should know? <span class="opt">(optional)</span></label>
+              <textarea id="fNotes" name="notes" rows="3" maxlength="600" placeholder="Where does it hurt, since when, any reports or surgery…"></textarea>
+            </div>
+            <div class="field">
+              <label for="fEmail">Email <span class="opt">(optional — for a calendar invite)</span></label>
+              <input id="fEmail" name="email" type="email" autocomplete="email" maxlength="120" placeholder="you@example.com" />
+            </div>
+            <!-- honeypot: humans never see this -->
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <p class="form-error" id="formError" role="alert" hidden></p>
+
+            <button type="submit" class="btn btn--primary btn--lg btn--block" id="submitBtn" disabled>
+              <span id="submitLabel">Confirm booking</span>
+            </button>
+            <p class="fine">Consultation fee ₹<span data-cfg="consultationFee">500</span>, payable at the visit. Need to reschedule? Just message on WhatsApp.</p>
+          </form>
+
+          <!-- Success -->
+          <div class="booking__done panel" id="bookingDone" hidden>
+            <div class="done__icon"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></div>
+            <h3 id="doneTitle">You're booked!</h3>
+            <p id="doneText"></p>
+            <div class="done__actions">
+              <a class="btn btn--primary" id="doneCal" href="#" target="_blank" rel="noopener">Add to my calendar</a>
+              <a class="btn btn--outline" id="doneWa" href="#" target="_blank" rel="noopener">Message on WhatsApp</a>
+            </div>
+            <button class="card__link done__again" id="bookAnother" type="button">Book another slot</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div class="section__head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Good <em>questions</em>.</h2>
+        </div>
+        <div class="faq__list">
+          <details class="reveal">
+            <summary>What happens in the first consultation?</summary>
+            <p>A detailed chat about your pain and history, a movement and strength assessment, and a clear explanation of what's going on. You'll leave with home exercises and a recommendation on whether you need therapy sessions.</p>
+          </details>
+          <details class="reveal">
+            <summary>How many sessions will I need?</summary>
+            <p>It depends entirely on your condition and how you respond. Some people need none beyond the consultation, some need a few, and post-surgery rehab takes longer. You'll always know the plan and the fee before starting.</p>
+          </details>
+          <details class="reveal">
+            <summary>What should I bring or wear?</summary>
+            <p>Loose, comfortable clothes that let you move and show the painful area (shorts for knee problems help). Bring any X-ray, MRI or doctor's reports you have.</p>
+          </details>
+          <details class="reveal">
+            <summary>Do I need a doctor's referral?</summary>
+            <p>No, you can book directly. If anything in the assessment suggests you need a scan or a specialist's opinion, you'll be told and referred.</p>
+          </details>
+          <details class="reveal">
+            <summary>How do I cancel or reschedule?</summary>
+            <p>Send a WhatsApp message or call. A few hours' notice helps someone else get the slot.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--tint" id="contact">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Contact</p>
+          <h2>Call, message, or <em>drop by</em>.</h2>
+        </div>
+        <div class="contact">
+          <a class="contact__card contact__card--wa reveal" data-link="wa" href="#" target="_blank" rel="noopener">
+            <span class="contact__icon"><svg class="i i--wa" viewBox="0 0 24 24"><use href="#ic-wa" /></svg></span>
+            <span class="contact__label">WhatsApp</span>
+            <strong data-cfg="whatsappDisplay">+91 00000 00000</strong>
+            <span class="contact__cta">Chat now →</span>
+          </a>
+          <a class="contact__card reveal" data-link="call" href="#">
+            <span class="contact__icon"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /></svg></span>
+            <span class="contact__label">Call</span>
+            <strong data-cfg="phoneDisplay">+91 00000 00000</strong>
+            <span class="contact__cta">Call now →</span>
+          </a>
+          <a class="contact__card reveal" data-link="map" href="#" target="_blank" rel="noopener">
+            <span class="contact__icon"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+            <span class="contact__label">Clinic</span>
+            <strong data-cfg="address">Clinic address</strong>
+            <span class="contact__cta">Get directions →</span>
+          </a>
+          <div class="contact__card contact__card--hours reveal">
+            <span class="contact__icon"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span class="contact__label">Hours (IST)</span>
+            <ul class="hours" id="hoursList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a href="#top" class="logo logo--light"><span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5-6 4 12 2.5-6H21" /></svg></span><span data-cfg="brand">Smriti Physio</span></a>
+        <p class="footer__tag">Assessment-first physiotherapy.</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#treatments">Treatments</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#book">Book</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer__legal">© <span id="year">2026</span> <span data-cfg="name">Dr. Smriti (PT)</span>. Information on this site is general and not a substitute for an in-person assessment.</p>
+    </div>
+  </footer>
+
+  <!-- Mobile action bar -->
+  <div class="mbar" id="mbar">
+    <a data-link="call" href="#" class="mbar__btn"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /></svg>Call</a>
+    <a data-link="wa" href="#" target="_blank" rel="noopener" class="mbar__btn"><svg class="i i--wa" viewBox="0 0 24 24"><use href="#ic-wa" /></svg>WhatsApp</a>
+    <a href="#book" class="mbar__btn mbar__btn--primary">Book slot</a>
+  </div>
+
+  <!-- Desktop floating WhatsApp -->
+  <a data-link="wa" href="#" target="_blank" rel="noopener" class="fab" aria-label="Chat on WhatsApp">
+    <svg class="i--wa" viewBox="0 0 24 24"><use href="#ic-wa" /></svg>
+  </a>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ic-wa" viewBox="0 0 24 24">
+      <path fill="currentColor" stroke="none" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.16-1.5A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.07.9.92-2.99-.2-.31a8.2 8.2 0 1 1 6.84 3.73zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.97-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22a7.4 7.4 0 0 1-1.37-1.7c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.3-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.16 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.17-.47-.29z"/>
+    </symbol>
+  </svg>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
