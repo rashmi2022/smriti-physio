@@ -31,7 +31,7 @@ window.SITE_CONFIG = {
    * live from your Google Calendar, each booking becomes a calendar event, and you get
    * an automatic WhatsApp alert.
    */
-  bookingEndpoint: "",
+  bookingEndpoint: "https://script.google.com/macros/s/AKfycbw-F-nH46_F5pzWGg3AUk3eG6w9zFdtqNECifcppHM1J0it9O1pPh_FpR5RXTXKTV9gLQ/exec",
   bookingDaysAhead: 14,
   slotMinutes: 30,
   minNoticeMinutes: 120,              // earliest bookable slot = now + this
