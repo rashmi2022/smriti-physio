@@ -8,18 +8,18 @@ window.SITE_CONFIG = {
   name: "Dr. Smriti (PT)",            // ← CHANGE  full display name
   shortName: "Dr. Smriti",            // used inside sentences
   brand: "Smriti Physio",             // logo text
-  city: "Your City",                  // ← CHANGE  shown in the hero
+  city: "Live Teleconsultation",                  // ← CHANGE  shown in the hero
 
   // Phone numbers: country code + number, digits only (no +, spaces or dashes)
-  phone: "910000000000",              // ← CHANGE  for "Call" buttons
-  whatsapp: "910000000000",           // ← CHANGE  for WhatsApp buttons & booking requests
+  phone: "919304184606",              // ← CHANGE  for "Call" buttons
+  whatsapp: "919304184606",           // ← CHANGE  for WhatsApp buttons & booking requests
 
-  email: "",                          // optional, shown in Contact if set
-  address: "Clinic name, Street, Area, City – 000000",   // ← CHANGE
+  email: "smritidas1820@gmail.com",                          // optional, shown in Contact if set
+  address: "",   // ← CHANGE
   mapsQuery: "",                      // optional, text to search on Google Maps; defaults to address
   googleReviewsUrl: "",               // optional, link to your Google Business reviews
 
-  credentials: [],                    // e.g. ["BPT", "MPT (Musculoskeletal)"] — shown in About
+  credentials: ["BPT(NIMS University)"],                    // e.g. ["BPT", "MPT (Musculoskeletal)"] — shown in About
   consultationFee: 500,
   consultationMinutes: 30,
 
@@ -40,13 +40,13 @@ window.SITE_CONFIG = {
   // Used for the hours shown on the page, and for slots when no endpoint is set.
   // If you use Google Calendar, keep HOURS in google-apps-script/Code.gs the same.
   hours: {
-    0: [],
-    1: [["09:00", "13:00"], ["16:00", "20:00"]],
-    2: [["09:00", "13:00"], ["16:00", "20:00"]],
-    3: [["09:00", "13:00"], ["16:00", "20:00"]],
-    4: [["09:00", "13:00"], ["16:00", "20:00"]],
-    5: [["09:00", "13:00"], ["16:00", "20:00"]],
-    6: [["09:00", "13:00"]],
+    0: [["08:00", "19:00"]],
+    1: [["08:00", "19:00"]],
+    2: [["08:00", "19:00"]],
+    3: [["08:00", "19:00"]],
+    4: [["08:00", "19:00"]],
+    5: [["08:00", "19:00"]],
+    6: [["08:00", "19:00"]],
   },
 
   visitModes: ["At the clinic", "Home visit", "Online (video call)"],

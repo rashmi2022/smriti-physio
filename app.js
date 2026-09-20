@@ -56,7 +56,7 @@
     const v = derived[el.dataset.cfg];
     if (v !== undefined && v !== "") el.textContent = v;
   });
-  document.title = `${cfg.shortName || cfg.name} — Physiotherapy${cfg.city && cfg.city !== "Your City" ? ` in ${cfg.city}` : ""}`;
+  document.title = `${cfg.shortName || cfg.name} - Physiotherapy${cfg.city && cfg.city !== "Your City" ? ` in ${cfg.city}` : ""}`;
 
   const defaultWa = `Hi ${cfg.shortName || ""}, I'd like to book a physiotherapy appointment.`;
   $$('[data-link="wa"]').forEach((a) => (a.href = waLink(a.dataset.waText || defaultWa)));
@@ -95,10 +95,10 @@
     const list = $("#hoursList");
     groups.forEach((g) => {
       const ranges = hours[g.days[0]] || [];
-      const label = g.days.length > 1 ? `${DAY_NAMES[g.days[0]]} – ${DAY_NAMES[g.days.at(-1)]}` : DAY_NAMES[g.days[0]];
+      const label = g.days.length > 1 ? `${DAY_NAMES[g.days[0]]} - ${DAY_NAMES[g.days.at(-1)]}` : DAY_NAMES[g.days[0]];
       const li = document.createElement("li");
       li.innerHTML = `<span>${label}</span><span class="${ranges.length ? "" : "closed"}">${
-        ranges.length ? ranges.map(([a, b]) => `${fmtTimeShort(a)} – ${fmtTimeShort(b)}`).join("<br>") : "Closed"
+        ranges.length ? ranges.map(([a, b]) => `${fmtTimeShort(a)} - ${fmtTimeShort(b)}`).join("<br>") : "Closed"
       }</span>`;
       list.appendChild(li);
     });
