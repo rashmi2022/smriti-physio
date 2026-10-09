@@ -80,3 +80,33 @@ config.js                  your details (edit this)
 assets/physio.jpg          your photo (add it)
 google-apps-script/        Google Calendar + WhatsApp backend
 ```
+
+# Reviews → reviews.json on GitHub
+
+Posted reviews are committed to `reviews.json` in your repo. Your host redeploys and the
+review appears for everyone in ~1–2 minutes. The person who posted sees it instantly.
+
+## One-time setup
+
+1. **Make a GitHub token** — github.com → Settings → Developer settings →
+   Fine-grained tokens → Generate new token.
+   - Repository access: *Only select repositories* → your site's repo
+   - Permissions → Repository → **Contents: Read and write** (nothing else)
+   - Expiration: the longest allowed; set a reminder to renew it.
+2. **Apps Script → Project Settings → Script Properties**, add:
+   - `GITHUB_TOKEN` = the token
+   - `GITHUB_REPO` = `your-username/your-repo`
+   - `GITHUB_BRANCH` = only if it isn't `main`
+   - `GITHUB_PATH` = only if reviews.json isn't in the repo root
+3. Replace `Reviews.gs` and `appsscript.json` with the new versions.
+4. Select `testReviews` → **Run**. It should log "GitHub says 200 — all good."
+5. **Deploy → Manage deployments → ✏️ → New version → Deploy.**
+
+## Managing reviews
+
+- Remove: delete its block from reviews.json and push (or edit on github.com).
+- Hide: add `"hidden": true`.
+- Moderate first: set `REVIEWS_AUTO_PUBLISH = false`; new reviews arrive with
+  `"hidden": true` and you delete that line to publish.
+- If you edit reviews.json locally, **pull before you push**. The script commits to
+  the same file, so your copy may be behind.

@@ -217,8 +217,8 @@
             <ul class="ticks">
               <li>Guided therapy &amp; exercise</li>
               <li>Number of sessions based on your progress</li>
-              <li>No forced packages or long commitments</li>
-              <li>Fee confirmed with you before you start</li>
+              <li>Care tailored to your needs and goals</li>
+              <li>Your plan evolves as you progress</li>
             </ul>
             <a data-link="wa" data-wa-text="Hi, I'd like to know about physiotherapy session charges." href="#" target="_blank" rel="noopener" class="btn btn--outline btn--block">Ask on WhatsApp</a>
           </div>
@@ -255,8 +255,8 @@
 
     <!-- ============ REVIEWS ============ -->
     <!--
-      TEMPLATE REVIEWS - these are sample placeholders, not real patient reviews.
-      Replace them with genuine reviews (with the patient's permission) before the site goes live.
+      Reviews are loaded from reviews.json (edit that file to add/remove them),
+      plus any reviews patients post through the form below.
     -->
     <section class="section" id="reviews">
       <div class="container">
@@ -266,64 +266,83 @@
             <h2>What patients <em>say</em>.</h2>
           </div>
           <div class="reviews__nav">
+            <a href="#write-review" class="btn btn--ghost btn--sm reviews__write">Write a review</a>
             <button class="round-btn" id="revPrev" aria-label="Previous reviews"><svg class="i" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
             <button class="round-btn" id="revNext" aria-label="Next reviews"><svg class="i" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
           </div>
         </div>
 
-        <div class="reviews" id="reviewTrack">
-          <figure class="review">
-            <div class="stars" aria-label="5 out of 5">★★★★★</div>
-            <blockquote>I have a desk job and my lower back used to give up by evening. <span data-cfg="shortName">Dr. Smriti</span> first explained what was actually wrong, then gave me a small set of exercises to do at home. In three weeks I stopped taking painkillers. Very grateful!</blockquote>
-            <figcaption><span class="avatar" style="--h:12">PS</span><span><strong>Priya Sharma</strong><small>Lower back pain</small></span></figcaption>
-          </figure>
-
-          <figure class="review">
-            <div class="stars" aria-label="5 out of 5">★★★★★</div>
-            <blockquote>Brought my mother (67) for her knee pain. She was scared to even climb the stairs to our flat. The doctor was so patient with her and explained everything slowly. Now she goes for her morning walk again without any support.</blockquote>
-            <figcaption><span class="avatar" style="--h:200">RI</span><span><strong>Rajesh Iyer</strong><small>Knee pain · for his mother</small></span></figcaption>
-          </figure>
-
-          <figure class="review">
-            <div class="stars" aria-label="5 out of 5">★★★★★</div>
-            <blockquote>Had my ACL reconstruction after a football injury and was worried I'd never play properly again. The rehab was step by step with clear targets every week. Back on the ground after 8 months, knee feels solid.</blockquote>
-            <figcaption><span class="avatar" style="--h:160">AK</span><span><strong>Mohd. Arif Khan</strong><small>ACL rehabilitation</small></span></figcaption>
-          </figure>
-
-          <figure class="review">
-            <div class="stars" aria-label="5 out of 5">★★★★★</div>
-            <blockquote>Software job, 10 hours on laptop, constant neck stiffness and headaches. Got my posture and workstation corrected and a 10-minute routine. Headaches have almost gone. Should have come much earlier honestly.</blockquote>
-            <figcaption><span class="avatar" style="--h:280">SK</span><span><strong>Sneha Kulkarni</strong><small>Neck pain &amp; posture</small></span></figcaption>
-          </figure>
-
-          <figure class="review">
-            <div class="stars" aria-label="5 out of 5">★★★★★</div>
-            <blockquote>Another clinic told me I needed a 15-session package. Here, after the ₹500 consultation, I was told 4 sessions and home exercises were enough.. and they were. Honest advice, which is rare.</blockquote>
-            <figcaption><span class="avatar" style="--h:30">VR</span><span><strong>Vikram Reddy</strong><small>Consultation</small></span></figcaption>
-          </figure>
-
-          <figure class="review">
-            <div class="stars" aria-label="5 out of 5">★★★★★</div>
-            <blockquote>Started coming for back pain after my second delivery. Exercises were gentle in the beginning and increased slowly. Now I can lift my baby and do housework without that sharp pain. Thank you so much!</blockquote>
-            <figcaption><span class="avatar" style="--h:330">GK</span><span><strong>Gurpreet Kaur</strong><small>Post-pregnancy back pain</small></span></figcaption>
-          </figure>
-
-          <figure class="review">
-            <div class="stars" aria-label="5 out of 5">★★★★★</div>
-            <blockquote>Papa is 62 and had become very stiff after retirement. The strength and mobility plan has made a big difference!! He is doing his yoga again and his balance is much better. Very professional and punctual.</blockquote>
-            <figcaption><span class="avatar" style="--h:90">AB</span><span><strong>Ananya Banerjee</strong><small>Mobility &amp; strength · for her father</small></span></figcaption>
-          </figure>
-
-          <figure class="review">
-            <div class="stars" aria-label="4 out of 5">★★★★<span class="star--off">★</span></div>
-            <blockquote>Runner's knee before my half marathon. Found out my hip muscles were the real problem, not the knee. Finished the race pain-free. Only wish evening slots were easier to get on weekends!</blockquote>
-            <figcaption><span class="avatar" style="--h:240">RA</span><span><strong>Rohit Agarwal</strong><small>Knee pain · runner</small></span></figcaption>
-          </figure>
-        </div>
+        <div class="reviews" id="reviewTrack" aria-live="polite"></div>
 
         <p class="reviews__more" id="reviewsMore" hidden>
           <a href="#" target="_blank" rel="noopener" id="reviewsLink">Read more reviews on Google →</a>
         </p>
+
+        <!-- ============ WRITE A REVIEW ============ -->
+        <div class="write-review" id="write-review">
+          <div class="write-review__intro">
+            <h3>Been treated by <span data-cfg="shortName">Dr. Smriti</span>? Tell others how it went.</h3>
+            <p>Your review helps someone in pain decide whether to book. A few honest lines about what was wrong and what changed is perfect.</p>
+            <p class="write-review__note">Only your name, rating and review are shown. Nothing else you type here is published.</p>
+          </div>
+
+          <form class="rv-form" id="reviewForm" novalidate>
+            <fieldset class="rating">
+              <legend>Your rating</legend>
+              <div class="rating__row">
+                <div class="rating__stars" id="rvStars">
+                  <input type="radio" name="rating" id="rv1" value="1" /><label for="rv1"><span class="sr">1 star</span><svg viewBox="0 0 24 24"><use href="#ic-star" /></svg></label>
+                  <input type="radio" name="rating" id="rv2" value="2" /><label for="rv2"><span class="sr">2 stars</span><svg viewBox="0 0 24 24"><use href="#ic-star" /></svg></label>
+                  <input type="radio" name="rating" id="rv3" value="3" /><label for="rv3"><span class="sr">3 stars</span><svg viewBox="0 0 24 24"><use href="#ic-star" /></svg></label>
+                  <input type="radio" name="rating" id="rv4" value="4" /><label for="rv4"><span class="sr">4 stars</span><svg viewBox="0 0 24 24"><use href="#ic-star" /></svg></label>
+                  <input type="radio" name="rating" id="rv5" value="5" /><label for="rv5"><span class="sr">5 stars</span><svg viewBox="0 0 24 24"><use href="#ic-star" /></svg></label>
+                </div>
+                <span class="rating__word" id="rvRatingWord" aria-hidden="true">Tap to rate</span>
+              </div>
+            </fieldset>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="rvName">Your name</label>
+                <input id="rvName" name="name" autocomplete="name" maxlength="60" placeholder="e.g. Priya S." />
+              </div>
+              <div class="field">
+                <label for="rvConcern">Treated for <span class="opt">(optional)</span></label>
+                <select id="rvConcern" name="concern"><option value="">Select…</option></select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="rvText">Your review</label>
+              <textarea id="rvText" name="text" rows="4" maxlength="600" placeholder="What brought you in, how the sessions went, how you feel now…"></textarea>
+              <span class="rv-count" id="rvCount" aria-live="polite">0 / 600</span>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" name="consent" id="rvConsent" />
+              <span>I agree that my name and review can be shown on this website.</span>
+            </label>
+
+            <!-- honeypot -->
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <p class="form-error" id="rvError" role="alert" hidden></p>
+
+            <button type="submit" class="btn btn--primary btn--lg btn--block" id="rvSubmit">
+              <span id="rvSubmitLabel">Post review</span>
+            </button>
+          </form>
+
+          <div class="rv-done" id="rvDone" hidden>
+            <div class="done__icon"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></div>
+            <h3 id="rvDoneTitle">Thank you!</h3>
+            <p id="rvDoneText"></p>
+            <div class="rv-done__actions">
+              <a href="#reviews" class="btn btn--primary" id="rvSeeIt">See your review</a>
+              <button type="button" class="btn btn--outline" id="rvAnother">Write another</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -530,6 +549,9 @@
 
   <!-- Icon sprite -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ic-star" viewBox="0 0 24 24">
+      <path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z" />
+    </symbol>
     <symbol id="ic-wa" viewBox="0 0 24 24">
       <path fill="currentColor" stroke="none" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.16-1.5A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.07.9.92-2.99-.2-.31a8.2 8.2 0 1 1 6.84 3.73zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.97-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22a7.4 7.4 0 0 1-1.37-1.7c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.3-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.16 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.17-.47-.29z"/>
     </symbol>

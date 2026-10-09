@@ -38,12 +38,14 @@ const CONFIG = {
 /* ------------------------------------------------------------------ */
 
 function doGet(e) {
+  const r = routeReviewGet_(e); if (r) return r;
   const action = (e && e.parameter && e.parameter.action) || 'slots';
   if (action === 'slots') return json_({ ok: true, slots: availableSlots_() });
   return json_({ ok: false, error: 'unknown_action' });
 }
 
 function doPost(e) {
+  const r = routeReviewPost_(e); if (r) return r;
   let d;
   try {
     d = JSON.parse(e.postData.contents);

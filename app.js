@@ -195,10 +195,12 @@
   const track = $("#reviewTrack");
   const scrollReviews = (dir) => {
     const card = $(".review", track);
+    if (!card) return;
     track.scrollBy({ left: dir * (card.offsetWidth + 20), behavior: "smooth" });
   };
   $("#revPrev").addEventListener("click", () => scrollReviews(-1));
   $("#revNext").addEventListener("click", () => scrollReviews(1));
+
 
   /* ------------------------------------------------------------------
    * Booking
@@ -496,6 +498,268 @@
     const sel = $(`.date[aria-selected="true"]`, datesEl);
     if (sel) datesEl.scrollLeft = sel.offsetLeft - parseFloat(getComputedStyle(datesEl).paddingLeft);
   }
+
+  /* ------------------------------------------------------------------
+   * Reviews: live list + "Write a review"
+   *   GET  {endpoint}?action=reviews   → { ok, reviews: [...] }
+   *   POST {endpoint} {action:"review"} → { ok, review, published }
+   * If the endpoint doesn't support reviews yet, submissions go to WhatsApp.
+   * ------------------------------------------------------------------ */
+  const rv = { live: false, shown: new Set() };
+  const RATING_WORDS = ["Tap to rate", "Poor", "Fair", "Good", "Very good", "Excellent"];
+  const rvForm = $("#reviewForm");
+  const rvStars = $$("#rvStars label");
+  const rvText = $("#rvText");
+
+  const initials = (name) =>
+    name.trim().split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("") || "★";
+  const hueOf = (str) => [...str].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
+
+  function reviewCard(r, { isNew = false, pending = false } = {}) {
+    const fig = document.createElement("figure");
+    fig.className = "review" + (isNew ? " review--new" : "");
+    const rating = Math.max(1, Math.min(5, Math.round(Number(r.rating) || 5)));
+
+    const top = document.createElement("div");
+    top.className = "review__top";
+    const stars = document.createElement("div");
+    stars.className = "stars";
+    stars.setAttribute("aria-label", `${rating} out of 5`);
+    stars.textContent = "★".repeat(rating);
+    if (rating < 5) {
+      const off = document.createElement("span");
+      off.className = "star--off";
+      off.textContent = "★".repeat(5 - rating);
+      stars.appendChild(off);
+    }
+    top.appendChild(stars);
+    if (r.date) {
+      const d = document.createElement("span");
+      d.className = "review__date";
+      d.textContent = fmtDate(r.date, { month: "short", year: "numeric" });
+      top.appendChild(d);
+    }
+    fig.appendChild(top);
+
+    if (pending) {
+      const b = document.createElement("span");
+      b.className = "review__badge";
+      b.textContent = "Visible to others after approval";
+      fig.appendChild(b);
+    }
+
+    const q = document.createElement("blockquote");
+    q.textContent = r.text;
+    fig.appendChild(q);
+
+    const cap = document.createElement("figcaption");
+    const av = document.createElement("span");
+    av.className = "avatar";
+    av.style.setProperty("--h", hueOf(r.name));
+    av.textContent = initials(r.name);
+    const who = document.createElement("span");
+    const n = document.createElement("strong");
+    n.textContent = r.name;
+    who.appendChild(n);
+    const sm = document.createElement("small");
+    sm.textContent = r.concern || "Patient";
+    who.appendChild(sm);
+    cap.append(av, who);
+    fig.appendChild(cap);
+    return fig;
+  }
+
+  async function loadReviews() {
+    if (!endpoint) return;
+    try {
+      const res = await fetch(`${endpoint}?action=reviews`);
+      const data = await res.json();
+      if (!data.ok || !Array.isArray(data.reviews)) return; // server not updated yet
+      rv.live = true;
+      // newest first, placed ahead of the existing cards
+      const frag = document.createDocumentFragment();
+      data.reviews.forEach((r) => {
+        if (!r || !r.text || !r.name || rv.shown.has(r.id)) return;
+        rv.shown.add(r.id);
+        frag.appendChild(reviewCard(r));
+      });
+      track.prepend(frag);
+    } catch (err) {
+      console.warn("Reviews unavailable; review form will use WhatsApp.", err);
+    }
+  }
+
+  // "Treated for" options mirror the booking form's concern list
+  const rvConcern = $("#rvConcern");
+  [...concernSel.options].slice(1).forEach((o) => {
+    if (o.value !== "Something else") rvConcern.add(new Option(o.value, o.value));
+  });
+
+  // Star picker: hover previews, click/keyboard sets
+  const paintStars = (n) => {
+    rvStars.forEach((l, i) => l.classList.toggle("is-on", i < n));
+    const w = $("#rvRatingWord");
+    w.textContent = RATING_WORDS[n] || RATING_WORDS[0];
+    w.classList.toggle("is-set", n > 0);
+  };
+  const currentRating = () => Number((rvForm.querySelector('input[name="rating"]:checked') || {}).value || 0);
+  rvStars.forEach((l, i) => {
+    l.addEventListener("mouseenter", () => paintStars(i + 1));
+    l.addEventListener("mouseleave", () => paintStars(currentRating()));
+  });
+  $$('#rvStars input').forEach((inp) =>
+    inp.addEventListener("change", () => {
+      paintStars(currentRating());
+      $(".rating", rvForm).classList.remove("is-invalid");
+    })
+  );
+
+  const updateCount = () => {
+    const n = rvText.value.length;
+    const c = $("#rvCount");
+    c.textContent = `${n} / 600`;
+    c.classList.toggle("is-low", n > 0 && n < 20);
+  };
+  rvText.addEventListener("input", updateCount);
+
+  const rvError = (msg) => {
+    const e = $("#rvError");
+    e.textContent = msg;
+    e.hidden = !msg;
+  };
+
+  function readReview() {
+    const f = new FormData(rvForm);
+    const v = (k) => String(f.get(k) || "").trim().replace(/\s+/g, " ");
+    return {
+      name: v("name"),
+      rating: currentRating(),
+      concern: v("concern"),
+      text: String(f.get("text") || "").trim(),
+      consent: !!f.get("consent"),
+      website: v("website"),
+    };
+  }
+
+  function validateReview(r) {
+    $$(".is-invalid", rvForm).forEach((e) => e.classList.remove("is-invalid"));
+    const bad = [];
+    if (!r.rating) bad.push([".rating", "a star rating"]);
+    if (r.name.length < 2) bad.push(["#rvName", "your name"]);
+    if (r.text.length < 20) bad.push(["#rvText", "a review of at least 20 characters"]);
+    if (!r.consent) bad.push([".check", "your consent to show the review"]);
+    bad.forEach(([sel]) => $(sel, rvForm).classList.add("is-invalid"));
+    if (bad.length) {
+      rvError(`Please add ${bad.map((b) => b[1]).join(", ")}.`);
+      const first = $(bad[0][0], rvForm);
+      (first.matches("input, textarea, select") ? first : $("input", first)).focus();
+      return false;
+    }
+    return true;
+  }
+
+  function showReviewInCarousel(r, pending) {
+    const card = reviewCard(r, { isNew: true, pending });
+    track.prepend(card);
+    track.scrollTo({ left: 0, behavior: "smooth" });
+  }
+
+  function reviewDone(title, text, canSee) {
+    rvForm.hidden = true;
+    $("#rvDoneTitle").textContent = title;
+    $("#rvDoneText").textContent = text;
+    $("#rvSeeIt").hidden = !canSee;
+    $("#rvDone").hidden = false;
+  }
+
+  rvForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    rvError("");
+    const r = readReview();
+    if (r.website) return; // bot
+    if (!validateReview(r)) return;
+
+    // No review backend: hand the review over on WhatsApp instead
+    if (!rv.live) {
+      const msg = [
+        `Hi ${cfg.shortName || ""}, here's my review for your website:`,
+        "",
+        `${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}`,
+        r.text,
+        "",
+        `— ${r.name}${r.concern ? ` (${r.concern})` : ""}`,
+        "I'm happy for this to be shown on your website.",
+      ].join("\n");
+      window.open(waLink(msg), "_blank", "noopener");
+      return reviewDone(
+        "Almost there!",
+        "Your review is ready in WhatsApp. Just tap send and it will be added to the site.",
+        false
+      );
+    }
+
+    const btn = $("#rvSubmit");
+    btn.classList.add("is-loading");
+    btn.disabled = true;
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify({ action: "review", ...r }),
+      });
+      const out = await res.json();
+      if (!out.ok) throw new Error(out.message || out.error || "failed");
+      const saved = { ...r, ...(out.review || {}) };
+      if (saved.id) rv.shown.add(saved.id);
+      const pending = out.published === false;
+      showReviewInCarousel(saved, pending);
+      reviewDone(
+        "Thank you!",
+        pending
+          ? "Your review has been received. It's in the carousel for you now, and will be visible to everyone once it's approved."
+          : "Your review is in the carousel above, and will be visible to everyone within a couple of minutes.",
+        true
+      );
+    } catch (err) {
+      console.error(err);
+      rvError("Couldn't post your review right now. Please try again in a moment.");
+    } finally {
+      btn.classList.remove("is-loading");
+      btn.disabled = false;
+    }
+  });
+
+  $("#rvSeeIt").addEventListener("click", (e) => {
+    e.preventDefault();
+    $("#reviews").scrollIntoView({ behavior: "smooth" });
+    track.scrollTo({ left: 0, behavior: "smooth" });
+  });
+
+  $("#rvAnother").addEventListener("click", () => {
+    rvForm.reset();
+    paintStars(0);
+    updateCount();
+    $("#rvDone").hidden = true;
+    rvForm.hidden = false;
+    $("#rvName").focus();
+  });
+
+  // Reviews you manage by hand, from reviews.json (shown after patient-posted ones)
+  async function loadReviewFile() {
+    try {
+      const res = await fetch(`reviews.json?v=${Date.now()}`, { cache: "no-store" });
+      const list = await res.json();
+      const frag = document.createDocumentFragment();
+      (Array.isArray(list) ? list : []).forEach((r) => {
+        if (r && r.name && r.text && !r.hidden) frag.appendChild(reviewCard(r));
+      });
+      track.appendChild(frag);
+    } catch (err) {
+      console.warn("Couldn't load reviews.json", err);
+    }
+  }
+
+  loadReviewFile();
+  loadReviews();
 
   refreshSlots(false);
 })();

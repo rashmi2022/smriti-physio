@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Priya Sharma",
+    "rating": 5,
+    "concern": "Lower back pain",
+    "text": "I have a desk job and my lower back used to give up by evening. Dr. Smriti first explained what was actually wrong, then gave me a small set of exercises to do at home. In three weeks I stopped taking painkillers. Very grateful!"
+  },
+  {
+    "name": "Rajesh Iyer",
+    "rating": 5,
+    "concern": "Knee pain · for his mother",
+    "text": "Brought my mother (67) for her knee pain. She was scared to even climb the stairs to our flat. The doctor was so patient with her and explained everything slowly. Now she goes for her morning walk again without any support."
+  },
+  {
+    "name": "Mohd. Arif Khan",
+    "rating": 5,
+    "concern": "ACL rehabilitation",
+    "text": "Had my ACL reconstruction after a football injury and was worried I'd never play properly again. The rehab was step by step with clear targets every week. Back on the ground after 8 months, knee feels solid."
+  },
+  {
+    "name": "Sneha Kulkarni",
+    "rating": 5,
+    "concern": "Neck pain & posture",
+    "text": "Software job, 10 hours on laptop, constant neck stiffness and headaches. Got my posture and workstation corrected and a 10-minute routine. Headaches have almost gone. Should have come much earlier honestly."
+  },
+  {
+    "name": "Vikram Reddy",
+    "rating": 5,
+    "concern": "Consultation",
+    "text": "Another clinic told me I needed a 10-session package. Here, after the ₹500 consultation, I was told 7 sessions and home exercises were enough.. and they were. Honest advice, which is rare."
+  },
+  {
+    "name": "Gurpreet Kaur",
+    "rating": 5,
+    "concern": "Post-pregnancy back pain",
+    "text": "Started coming for back pain after my second delivery. Exercises were gentle in the beginning and increased slowly. Now I can lift my baby and do housework without that sharp pain. Thank you so much!"
+  },
+  {
+    "name": "Ananya Banerjee",
+    "rating": 5,
+    "concern": "Mobility & strength · for her father",
+    "text": "Papa is 62 and had become very stiff after retirement. The strength and mobility plan has made a big difference!! He is doing his yoga again and his balance is much better. Very professional and punctual."
+  },
+  {
+    "name": "Rohit Agarwal",
+    "rating": 4,
+    "concern": "Knee pain · runner",
+    "text": "Runner's knee before my half marathon. Found out my hip muscles were the real problem, not the knee. Finished the race pain-free. Only wish evening slots were easier to get on weekends!"
+  }
+]

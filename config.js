@@ -49,5 +49,5 @@ window.SITE_CONFIG = {
     6: [["08:00", "19:00"]],
   },
 
-  visitModes: ["At the clinic", "Home visit", "Online (video call)"],
+  visitModes: ["Home visit", "Online (video call)"],
 };
